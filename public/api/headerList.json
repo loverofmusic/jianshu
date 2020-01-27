@@ -1,3 +1,4 @@
 {
-  "data": "ddddddd"
+  "success": true,
+  "data": ["春节", "旅行", "react"]
 }
