@@ -1,4 +1,5 @@
 import * as constants from "./actionTypes";
+import axios from "axios";
 
 export const searchFocus = () => ({
   type: constants.SEARCH_FOCUS
@@ -9,7 +10,14 @@ export const searchBlur = () => ({
 });
 
 export const getList = () => {
-  return  (dispatch) => {
-    console.log('tag', '')
-  }
-}
+  return dispatch => {
+    axios
+      .get("/api/headerList.json")
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
