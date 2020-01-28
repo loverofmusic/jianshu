@@ -21,8 +21,8 @@ import {
 } from "./style";
 
 class Header extends Component {
-  getListArea(show) {
-    if (show) {
+  getListArea() {
+    if (this.props.focused) {
       return (
         <SearchInfo>
           <SearchInfoTitle>
@@ -30,16 +30,9 @@ class Header extends Component {
             <SearchInfoSwitch>换一批</SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
-            <SearchInfoItem>历史</SearchInfoItem>
+            {this.props.list.map(item => {
+              return <SearchInfoItem key={item}>{item}</SearchInfoItem>;
+            })}
           </SearchInfoList>
         </SearchInfo>
       );
@@ -65,7 +58,7 @@ class Header extends Component {
             </CSSTransition>
 
             <span className={this.props.focused ? "iconfont focused" : "iconfont"}>&#xe6e4;</span>
-            {this.getListArea(this.props.focused)}
+            {this.getListArea()}
           </SearchWrapper>
 
           <NavItem className="right">登录</NavItem>
@@ -89,15 +82,16 @@ const mapStateToProps = state => {
   return {
     // focused: state.header.get("focused")
     // focused: state.get("header").get("focused")
-    focused: state.getIn(["header", "focused"])
+    focused: state.getIn(["header", "focused"]),
+    list: state.getIn(["header", "list"])
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     handleInputFocus() {
-      dispatch(actionCreators.getList());
       dispatch(actionCreators.searchFocus());
+      dispatch(actionCreators.getList());
     },
     handleInputBlur() {
       dispatch(actionCreators.searchBlur());
