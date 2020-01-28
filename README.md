@@ -74,6 +74,8 @@ this.getListArea() 写成了 this.getListArea
 
 import React, { Component } from "react"; 写成了 import { React, Component } from "react"
 
+<SearchInfo onMouseEnter={handleMouseEnter}> 写成了 <SearchInfo onMouseEnter={handleMouseEnter()}>
+
 ### 项目说明
 #### 7-12 ajax获取推荐数据列表（使用redux-thunk发送ajax请求，获取数据，存到store里面，然后在页面显示）
 
@@ -87,5 +89,5 @@ jianshu/src/common/header/store/reducer.js
 
 #### 7-13 代码微调
 
-1. 
+#### 7-14 换一批
 
