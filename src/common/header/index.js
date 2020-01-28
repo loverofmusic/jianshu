@@ -22,7 +22,8 @@ import {
 
 class Header extends Component {
   getListArea() {
-    if (this.props.focused) {
+    const {focused, list} = this.props;
+    if (focused) {
       return (
         <SearchInfo>
           <SearchInfoTitle>
@@ -30,7 +31,7 @@ class Header extends Component {
             <SearchInfoSwitch>换一批</SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
-            {this.props.list.map(item => {
+            {list.map(item => {
               return <SearchInfoItem key={item}>{item}</SearchInfoItem>;
             })}
           </SearchInfoList>
@@ -41,6 +42,7 @@ class Header extends Component {
     }
   }
   render() {
+    const { focused, handleInputFocus, handleInputBlur } = this.props;
     return (
       <HeaderWrapper>
         {/* <Logo href="/" /> */}
@@ -49,15 +51,15 @@ class Header extends Component {
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
           <SearchWrapper>
-            <CSSTransition classNames="slide" timeout={200} in={this.props.focused}>
+            <CSSTransition classNames="slide" timeout={200} in={focused}>
               <NavSearch
-                onFocus={this.props.handleInputFocus}
-                className={this.props.focused ? "focused" : ""}
-                onBlur={this.props.handleInputBlur}
+                onFocus={handleInputFocus}
+                className={focused ? "focused" : ""}
+                onBlur={handleInputBlur}
               />
             </CSSTransition>
 
-            <span className={this.props.focused ? "iconfont focused" : "iconfont"}>&#xe6e4;</span>
+            <span className={focused ? "iconfont focused" : "iconfont"}>&#xe6e4;</span>
             {this.getListArea()}
           </SearchWrapper>
 

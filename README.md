@@ -85,5 +85,7 @@ import React, { Component } from "react"; 写成了 import { React, Component } 
 jianshu/src/common/header/store/reducer.js 
 里面的 list 被 fromJS 变成了一个 immutable 类型的数组，当你写 return state.set("list", action.data);的时候 action.data 是普通数组类型， 所以在这之前，也就是 actionCreator 里面，要把  changeList 这个 action 里面的 data也转换成 immutable类型
 
+#### 7-13 代码微调
 
+1. 
 
