@@ -74,4 +74,16 @@ this.getListArea() 写成了 this.getListArea
 
 import React, { Component } from "react"; 写成了 import { React, Component } from "react"
 
+### 项目说明
+#### 7-12 ajax获取推荐数据列表（使用redux-thunk发送ajax请求，获取数据，存到store里面，然后在页面显示）
+
+1. 把异步获取数据的逻辑 都放到 actionCreator 里面，
+那么就要求 actionCreator 返回的对象不能是一个普通的js对象了，而是一个函数，
+要想使 actionCreator 返回的对象是一个 函数， 就必须使用 redux-thunk 这个中间件；
+
+2. 当我们想要改变 store 里面数据的时候， 要注意 
+jianshu/src/common/header/store/reducer.js 
+里面的 list 被 fromJS 变成了一个 immutable 类型的数组，当你写 return state.set("list", action.data);的时候 action.data 是普通数组类型， 所以在这之前，也就是 actionCreator 里面，要把  changeList 这个 action 里面的 data也转换成 immutable类型
+
+
 

@@ -19,7 +19,7 @@ export default (state = defaultState, action) => {
   }
   if (action.type === constants.CHANGE_LIST) {
     // console.log(action.data);
-    return state.set("list", action.data);;
+    return state.set("list", action.data);
   }
 
   return state;
