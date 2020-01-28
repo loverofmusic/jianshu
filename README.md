@@ -66,3 +66,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### 项目中曾经写错 导致报错的警告的地方
+jianshu/src/common/header/index.js 
+=> 
+this.getListArea() 写成了 this.getListArea
+
+import React, { Component } from "react"; 写成了 import { React, Component } from "react"
+
+
