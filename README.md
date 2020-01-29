@@ -91,3 +91,6 @@ jianshu/src/common/header/store/reducer.js
 
 #### 7-14 换一批
 
+#### 7-15 换一批icon旋转特效
+ref 可以获取到真实 dom
+

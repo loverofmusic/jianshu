@@ -22,12 +22,21 @@ import {
 
 class Header extends Component {
   getListArea() {
-    const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+    const {
+      focused,
+      list,
+      page,
+      totalPage,
+      mouseIn,
+      handleMouseEnter,
+      handleMouseLeave,
+      handleChangePage
+    } = this.props;
     const newList = list.toJS();
     const pageList = [];
 
     for (let i = (page - 1) * 10; i < page * 10; i++) {
-      if (newList[i]){
+      if (newList[i]) {
         pageList.push(<SearchInfoItem key={i}>{newList[i]}</SearchInfoItem>);
       }
     }
@@ -37,7 +46,21 @@ class Header extends Component {
         <SearchInfo onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoSwitch onClick={() => {handleChangePage(page, totalPage)}}>换一批</SearchInfoSwitch>
+            <SearchInfoSwitch
+              onClick={() => {
+                handleChangePage(page, totalPage, this.spinIcon);
+              }}
+            >
+              <span
+                ref={icon => {
+                  this.spinIcon = icon;
+                }}
+                className="iconfont spin"
+              >
+                &#xe635;
+              </span>
+              换一批
+            </SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>{pageList}</SearchInfoList>
         </SearchInfo>
@@ -64,7 +87,7 @@ class Header extends Component {
               />
             </CSSTransition>
 
-            <span className={focused ? "iconfont focused" : "iconfont"}>&#xe6e4;</span>
+            <span className={focused ? "iconfont focused zoom" : "iconfont zoom"}>&#xe6e4;</span>
             {this.getListArea()}
           </SearchWrapper>
 
@@ -112,13 +135,20 @@ const mapDispatchToProps = dispatch => {
     handleMouseLeave() {
       dispatch(actionCreators.mouseLeave());
     },
-    handleChangePage(page, totalPage){
-      if(page<totalPage){
+    handleChangePage(page, totalPage, spin) {
+      // console.log(spin)
+      let originAngle = spin.style.transform.replace(/[^0-9]/gi, "");
+      if (originAngle) {
+        originAngle = parseInt(originAngle, 10);
+      } else {
+        originAngle = 0;
+      }
+      spin.style.transform = "rotate(" + (originAngle + 180) + "deg)";
+      if (page < totalPage) {
         dispatch(actionCreators.changePage(page + 1));
       } else {
         dispatch(actionCreators.changePage(1));
       }
-      
     }
   };
 };
