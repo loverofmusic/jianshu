@@ -67,6 +67,14 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+### redux单向数据流 流程
+先派发 action 给 store ，
+store 给 reducer，
+reducer 返回一个新的数据给到 store， 
+store 去变更自己的内容，
+当数据发生变更了，页面自动就变化了
+
+
 ### 项目中曾经写错 导致报错的警告的地方
 jianshu/src/common/header/index.js 
 => 
