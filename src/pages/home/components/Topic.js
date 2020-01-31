@@ -4,16 +4,23 @@ import { connect } from "react-redux";
 
 class Topic extends Component {
   render() {
+    const list = this.props.list;
     return (
       <TopicWrapper>
-        {this.props.list.map(item => {
+        {/* {list.map(item => {
           return (
-            <TopicItem key={item.get('id')}>
-              <img className="topic-pic" src={item.get('imgUrl')} alt="" />
-              {item.get('title')}
+            <TopicItem key={item.get("id")}>
+              <img className="topic-pic" src={item.get("imgUrl")} alt="" />
+              {item.get("title")}
             </TopicItem>
           );
-        })}
+        })} */}
+        {list.map(item => (
+          <TopicItem key={item.get("id")}>
+            <img className="topic-pic" src={item.get("imgUrl")} alt="" />
+            {item.get("title")}
+          </TopicItem>
+        ))}
       </TopicWrapper>
     );
   }
