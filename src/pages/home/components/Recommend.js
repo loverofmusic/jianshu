@@ -1,9 +1,23 @@
 import React, { Component } from "react";
+import { RecommendWrapper, RecommendItem } from "../style";
+import { connect } from "react-redux";
 
 class Recommend extends Component {
   render() {
-    return <div>Recommend</div>;
+    const list = this.props.list;
+    return (
+      <RecommendWrapper>
+        {/* <RecommendItem imgUrl="http://cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png"></RecommendItem> */}
+        {list.map(item => (
+          <RecommendItem key={item.get("id")} src={item.get("imgUrl")}></RecommendItem>
+        ))}
+      </RecommendWrapper>
+    );
   }
 }
 
-export default Recommend;
+const mapState = state => ({
+  list: state.get("home").get("recommendList")
+});
+
+export default connect(mapState)(Recommend);

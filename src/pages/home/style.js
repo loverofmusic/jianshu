@@ -18,7 +18,7 @@ export const HomeLeft = styled.div`
 `;
 
 export const HomeRight = styled.div`
-  width: 240px;
+  width: 280px;
   float: right;
 `;
 
@@ -26,6 +26,7 @@ export const TopicWrapper = styled.div`
   padding: 20px 0 10px 0;
   overflow:hidden;
   margin-left: -18px;
+  border-bottom: 1px solid #dcdcdc;
 `;
 
 export const TopicItem = styled.div`
@@ -74,4 +75,23 @@ export const ListInfo = styled.div`
     font-size: 13px;
     color: #999;
   }
+`;
+
+export const RecommendWrapper = styled.div`
+  margin: 30px 0;
+  width: 280px;
+`;
+
+// export const RecommendItem = styled.div`
+//   width: 280px;
+//   height: 50px;
+//   url(${(props)=>props.imgUrl});
+//   background-size: contain;
+// `;
+
+export const RecommendItem = styled.img`
+  width: 280px;
+  height: 50px;
+  margin-bottom: 6px;
+  border-radius: 4px;
 `;

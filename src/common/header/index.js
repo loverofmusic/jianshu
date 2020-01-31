@@ -93,18 +93,20 @@ class Header extends Component {
             {this.getListArea()}
           </SearchWrapper>
 
-          <NavItem className="right">登录</NavItem>
+        
+          <Addition>
+            <Button className="writting">
+              <span className="iconfont">&#xe6af;</span>写文章
+            </Button>
+            <Button className="reg">注册</Button>
+          </Addition>
+
+          <NavItem className="right log">登录</NavItem>
           {/* Aa */}
           <NavItem className="right">
             <span className="iconfont">&#xe636;</span>
           </NavItem>
         </Nav>
-        <Addition>
-          <Button className="writting">
-            <span className="iconfont">&#xe6af;</span>写文章
-          </Button>
-          <Button className="reg">注册</Button>
-        </Addition>
       </HeaderWrapper>
     );
   }
@@ -126,7 +128,7 @@ const mapDispatchToProps = dispatch => {
   return {
     handleInputFocus(list) {
       dispatch(actionCreators.searchFocus());
-      console.log(list.size)
+      console.log(list.size);
       list.size === 0 && dispatch(actionCreators.getList());
     },
     handleInputBlur() {
