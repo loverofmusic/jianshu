@@ -84,7 +84,12 @@ import React, { Component } from "react"; 写成了 import { React, Component } 
 
 <SearchInfo onMouseEnter={handleMouseEnter}> 写成了 <SearchInfo onMouseEnter={handleMouseEnter()}>
 
+/Users/zhangcong/Desktop/jianshu/src/pages/home/index.js
+=>
+export const HomeWrapper 导出后 正确导入要用 import { HomeWrapper } from "./style";
+
 ### 项目说明
+## 7 header组件开发
 #### 7-12 ajax获取推荐数据列表（使用redux-thunk发送ajax请求，获取数据，存到store里面，然后在页面显示）
 
 1. 把异步获取数据的逻辑 都放到 actionCreator 里面，
@@ -101,4 +106,17 @@ jianshu/src/common/header/store/reducer.js
 
 #### 7-15 换一批icon旋转特效
 ref 可以获取到真实 dom
+
+#### 7-16避免无意义的请求发送，提升组件性能
+
+## 8. 首页组件开发
+
+#### 8.1 路由设置
+
+#### 8.2 首页组件拆分
+
+#### 8.3 首页 专题区域 布局及reducer的设计
+
+
+
 
