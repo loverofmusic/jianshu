@@ -5,8 +5,9 @@ import Header from "./common/header";
 import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
-import Detail from './pages/detail';
-import Home from './pages/home';
+import Detail from "./pages/detail";
+import Home from "./pages/home";
+import { Link } from "react-router-dom";
 
 export default class App extends Component {
   render() {
@@ -14,8 +15,10 @@ export default class App extends Component {
       <Provider store={store}>
         <GlobalStyle />
         <GlobalIcon />
-        <Header />
         <BrowserRouter>
+          <Link to="/">
+            <Header />
+          </Link>
           <Route path="/" exact render={() => <Home></Home>}></Route>
           <Route path="/detail" exact render={() => <Detail></Detail>}></Route>
         </BrowserRouter>
