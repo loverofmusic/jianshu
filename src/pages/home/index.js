@@ -8,6 +8,9 @@ import { connect } from "react-redux";
 import { actionCreators } from "./store";
 
 class Home extends Component {
+  handleScrollTop() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <HomeWrapper>
