@@ -11,7 +11,7 @@ export const HomeLeft = styled.div`
   float: left;
   margin-top: 30px;
   margin-left: 15px;
-  .banner-img{
+  .banner-img {
     width: 625px;
     height: 270px;
   }
@@ -24,7 +24,7 @@ export const HomeRight = styled.div`
 
 export const TopicWrapper = styled.div`
   padding: 20px 0 10px 0;
-  overflow:hidden;
+  overflow: hidden;
   margin-left: -18px;
   border-bottom: 1px solid #dcdcdc;
 `;
@@ -41,8 +41,8 @@ export const TopicItem = styled.div`
   padding-right: 10px;
   margin-left: 18px;
   margin-bottom: 12px;
-  .topic-pic{
-    width:32px;
+  .topic-pic {
+    width: 32px;
     height: 32px;
     float: left;
     margin-right: 10px;
@@ -53,7 +53,7 @@ export const ListItem = styled.div`
   padding: 20px 0;
   border-bottom: 1px solid #dcdcdc;
   overflow: hidden;
-  .pic{
+  .pic {
     width: 125px;
     height: 100px;
     float: right;
@@ -63,14 +63,14 @@ export const ListItem = styled.div`
 
 export const ListInfo = styled.div`
   width: 500px;
-  float:left;
-  .title{
+  float: left;
+  .title {
     line-height: 27px;
     font-size: 18px;
     font-weight: bold;
     color: #333;
   }
-  .desc{
+  .desc {
     line-height: 24px;
     font-size: 13px;
     color: #999;
@@ -106,4 +106,18 @@ export const LoadMore = styled.div`
   color: #fff;
   margin: 30px 0;
   cursor: pointer;
+`;
+
+export const BackTop = styled.div`
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  cursor: pointer;
+  background: #fff;
 `;
