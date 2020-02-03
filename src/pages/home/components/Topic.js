@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class Topic extends Component {
   render() {
-    const list = this.props.list;
+    const { list } = this.props;
     return (
       <TopicWrapper>
         {/* {list.map(item => {
@@ -27,7 +27,8 @@ class Topic extends Component {
 }
 
 const mapState = state => ({
-  list: state.get("home").get("topicList")
+  // list: state.get("home").get("topicList")
+  list: state.getIn(["home", "topicList"])
 });
 
 export default connect(mapState)(Topic);

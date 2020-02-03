@@ -1,28 +1,38 @@
 import React, { Component, Fragment } from "react";
-import { ListItem, ListInfo } from "../style";
+import { ListItem, ListInfo, LoadMore } from "../style";
+import { connect } from "react-redux";
+import { actionCreators } from "../store";
 
 class List extends Component {
   render() {
+    const { list, getMoreList, page } = this.props;
     return (
       <Fragment>
-        <ListItem>
-          <img
-            className="pic"
-            src="//upload-images.jianshu.io/upload_images/1878622-0f9c21889862f1a3?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
-            alt=""
-          />
-          <ListInfo>
-            <h3 className="title">云南边境地区流行的“卡苦”是一种什么毒品？</h3>
-            <p className="desc">
-              在我国云南边境，由于靠近金三角，阿片类毒品（鸦片、海洛因）问题一直比较严重，很长一段时间海洛因泛滥成灾，随着当地对此类毒品进行多次严厉打击之后，...
-            </p>
-          </ListInfo>
-        </ListItem>
-
-        
+        {list.map((item, index) => (
+          <ListItem key={index}>
+            <img className="pic" src={item.get("imgUrl")} alt="" />
+            <ListInfo>
+              <h3 className="title">{item.get("title")}</h3>
+              <p className="desc">{item.get("desc")}</p>
+            </ListInfo>
+          </ListItem>
+        ))}
+        <LoadMore onClick={() => getMoreList(page)}>更多文字</LoadMore>
       </Fragment>
     );
   }
 }
 
-export default List;
+const mapState = state => ({
+  // list: state.get("home").get("articleList")
+  list: state.getIn(["home", "articleList"]),
+  page: state.getIn(["home", "articlePage"])
+});
+
+const mapDispatch = dispatch => ({
+  getMoreList(page) {
+    dispatch(actionCreators.getMoreList(page));
+  }
+});
+
+export default connect(mapState, mapDispatch)(List);
