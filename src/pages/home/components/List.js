@@ -10,7 +10,7 @@ class List extends PureComponent {
     return (
       <Fragment>
         {list.map((item, index) => (
-          <Link to="./detail" key={index}>
+          <Link to={"./detail/" + item.get("id")} key={index}>
             <ListItem>
               <img className="pic" src={item.get("imgUrl")} alt="" />
               <ListInfo>
