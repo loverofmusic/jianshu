@@ -89,7 +89,7 @@ import React, { Component } from "react"; 写成了 import { React, Component } 
 export const HomeWrapper 导出后 正确导入要用 import { HomeWrapper } from "./style";
 
 ### 项目说明
-## 7 header组件开发
+## 7. header组件开发
 #### 7-12 ajax获取推荐数据列表（使用redux-thunk发送ajax请求，获取数据，存到store里面，然后在页面显示）
 
 1. 把异步获取数据的逻辑 都放到 actionCreator 里面，
@@ -131,9 +131,13 @@ ref 可以获取到真实 dom
 
 #### 8.10 首页性能优化 路由跳转到详情页面
 
+
+## 9. 详情页面
 #### 9.1 详情页面布局
 
-#### 9.2 redux管理详情页面数据  
+#### 9.2 redux管理详情页面数据 
+
+#### 9.3 异步数据获取
 
 
 
