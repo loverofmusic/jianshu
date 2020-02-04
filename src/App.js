@@ -8,18 +8,24 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Detail from "./pages/detail";
 import Home from "./pages/home";
 
-export default class App extends Component {
+class App extends Component {
   render() {
+    
     return (
       <Provider store={store}>
         <GlobalStyle />
         <GlobalIcon />
         <BrowserRouter>
           <Header />
-          <Route path="/" exact render={() => <Home></Home>}></Route>
-          <Route path="/detail/:id" exact render={() => <Detail></Detail>}></Route>
+          {/* <Route path="/" exact render={() => <Home></Home>}></Route> */}
+          <Route path="/" exact component={Home}></Route>
+          {/* <Route path="/detail/:id" exact render={() => <Detail></Detail>}></Route> */}
+          <Route path="/detail/:id" exact component={Detail}></Route>
+
         </BrowserRouter>
       </Provider>
     );
   }
 }
+
+export default App;
