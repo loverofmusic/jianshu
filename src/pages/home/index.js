@@ -12,7 +12,6 @@ class Home extends PureComponent {
     window.scrollTo(0, 0);
   }
   render() {
-    console.log(this.props)
     return (
       <HomeWrapper>
         <HomeLeft>

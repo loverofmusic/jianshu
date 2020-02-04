@@ -1,18 +1,18 @@
 import axios from "axios";
-import * as constants from './actionTypes'
+import * as constants from "./actionTypes";
 
-const changeDetail = (title, content)=>({
+const changeDetail = (title, content) => ({
   type: constants.CHANGE_DETAIL,
   title,
   content
-})
+});
 
-export const getDetail = () => {
+export const getDetail = id => {
   return dispatch => {
-    axios.get("/api/detail.json").then((res)=>{
+    axios.get("/api/detail.json?id=" + id).then(res => {
       // console.log(res.data.data);
       const result = res.data.data;
-      dispatch(changeDetail(result.title, result.content))
+      dispatch(changeDetail(result.title, result.content));
     });
   };
 };
