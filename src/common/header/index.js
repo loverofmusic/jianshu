@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { actionCreators } from "./store";
 import { Link } from "react-router-dom";
 
+import { actionCreators as loginActionCreators } from "../../pages/login/store";
+
 import {
   HeaderWrapper,
   Logo,
@@ -71,14 +73,14 @@ class Header extends Component {
     }
   }
   render() {
-    const { focused, list, handleInputFocus, handleInputBlur } = this.props;
+    const { focused, list, handleInputFocus, handleInputBlur, login, logout } = this.props;
     return (
       <HeaderWrapper>
         {/* <Logo href="/" /> */}
         <Link to="/">
           <Logo />
         </Link>
-        
+
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
@@ -97,16 +99,23 @@ class Header extends Component {
             {this.getListArea()}
           </SearchWrapper>
 
-        
           <Addition>
             <Button className="writting">
               <span className="iconfont">&#xe6af;</span>写文章
             </Button>
             <Button className="reg">注册</Button>
           </Addition>
-
-          <NavItem className="right log">登录</NavItem>
+          {login ? (
+            <NavItem onClick={logout} className="right log">
+              退出
+            </NavItem>
+          ) : (
+            <Link to="/login">
+              <NavItem className="right log">登录</NavItem>
+            </Link>
+          )}
           {/* Aa */}
+
           <NavItem className="right">
             <span className="iconfont">&#xe636;</span>
           </NavItem>
@@ -124,7 +133,8 @@ const mapStateToProps = state => {
     list: state.getIn(["header", "list"]),
     page: state.getIn(["header", "page"]),
     totalPage: state.getIn(["header", "totalPage"]),
-    mouseIn: state.getIn(["header", "mouseIn"])
+    mouseIn: state.getIn(["header", "mouseIn"]),
+    login: state.getIn(["login", "login"])
   };
 };
 
@@ -158,6 +168,9 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.changePage(1));
       }
+    },
+    logout() {
+      dispatch(loginActionCreators.logout());
     }
   };
 };
